@@ -1,0 +1,4 @@
+packages:
+  - "packages/typescript/typescript-config/**"
+  - "apps/customer/front/**"
+  - "apps/admin/front/**"

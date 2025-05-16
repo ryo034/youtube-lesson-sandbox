@@ -1,0 +1,17 @@
+{
+  "extends": "@workspace/typescript-config/react.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["./src/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "vite.config.ts", "dist", "build", "public"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
