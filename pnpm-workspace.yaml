@@ -1,5 +1,5 @@
 packages:
   - "packages/typescript/typescript-config/**"
-  - "packages/typescript/ui/*"
+  - "packages/typescript/ui/**"
   - "apps/customer/front/**"
   - "apps/admin/front/**"

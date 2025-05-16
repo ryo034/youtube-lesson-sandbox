@@ -29,6 +29,9 @@ importers:
       '@workspace/typescript-config':
         specifier: workspace:*
         version: link:../../../packages/typescript/typescript-config
+      '@workspace/ui':
+        specifier: workspace:*
+        version: link:../../../packages/typescript/ui
       globals:
         specifier: ^16.0.0
         version: 16.1.0
