@@ -1,9 +1,8 @@
-import Link from "next/link"
-import Image from "next/image"
 import type { Product } from "@/infrastructure/types"
 import { Card, CardContent, CardFooter } from "@workspace/ui/components/ui/card"
 import { formatPrice } from "@/infrastructure/lib/utils"
 import { AddToCartButton } from "@workspace/ui/components/products/AddToCartButton"
+import { Link } from "react-router-dom"
 
 interface ProductCardProps {
   product: Product
@@ -12,9 +11,9 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="overflow-hidden">
-      <Link href={`/products/${product.id}`} className="block overflow-hidden">
+      <Link to={`/products/${product.id}`} className="block overflow-hidden">
         <div className="aspect-square overflow-hidden">
-          <Image
+          <img
             src={product.image || "/placeholder.svg"}
             alt={product.name}
             width={300}
@@ -24,7 +23,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </Link>
       <CardContent className="p-4">
-        <Link href={`/products/${product.id}`} className="block">
+        <Link to={`/products/${product.id}`} className="block">
           <h3 className="font-medium line-clamp-1">{product.name}</h3>
         </Link>
       </CardContent>

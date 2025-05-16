@@ -4,8 +4,8 @@ import { useState } from "react"
 import { Button } from "@workspace/ui/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@workspace/ui/components/ui/dialog"
 import { useAuth } from "@/components/auth/auth-provider"
-import { useToast } from "@workspace/ui/components/ui/use-toast"
 import { v4 as uuidv4 } from "uuid"
+import { toast } from "sonner"
 
 interface LoginDialogProps {
   open: boolean
@@ -14,7 +14,6 @@ interface LoginDialogProps {
 
 export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
   const { login } = useAuth()
-  const { toast } = useToast()
   const [isLoading, setIsLoading] = useState(false)
 
   const handleGoogleLogin = async () => {
@@ -31,11 +30,9 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
 
       login(mockUser)
 
-      toast({
-        title: "ログインしました",
+      toast("ログインしました", {
         description: `${mockUser.name}さん、ようこそ！`,
       })
-
       onOpenChange(false)
       setIsLoading(false)
     }, 1000)

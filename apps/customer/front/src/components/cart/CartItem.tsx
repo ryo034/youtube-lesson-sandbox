@@ -4,9 +4,8 @@ import type { CartItem as CartItemType } from "@/infrastructure/types"
 import { useCart } from "@/components/cart/cart-provider"
 import { Button } from "@workspace/ui/components/ui/button"
 import { Minus, Plus, Trash2 } from "lucide-react"
-import Image from "next/image"
 import { formatPrice } from "@/infrastructure/lib/utils"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 
 interface CartItemProps {
   item: CartItemType
@@ -18,7 +17,7 @@ export function CartItem({ item }: CartItemProps) {
   return (
     <div className="flex gap-4 py-4">
       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border">
-        <Image
+        <img
           src={item.image || "/placeholder.svg"}
           alt={item.name}
           width={96}
@@ -29,7 +28,7 @@ export function CartItem({ item }: CartItemProps) {
 
       <div className="flex flex-1 flex-col">
         <div className="flex justify-between text-base font-medium">
-          <Link href={`/products/${item.id}`} className="hover:underline">
+          <Link to={`/products/${item.id}`} className="hover:underline">
             <h3>{item.name}</h3>
           </Link>
           <p className="ml-4 text-primary">{formatPrice(item.price * item.quantity)}</p>

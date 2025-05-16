@@ -2,8 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 import type { CartItem, Product } from "@/infrastructure/types"
-import { useToast } from "@workspace/ui/components/ui/use-toast"
-
+import { toast } from "sonner"
 interface CartContextType {
   items: CartItem[]
   addItem: (product: Product, quantity?: number) => void
@@ -17,7 +16,6 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
-  const { toast } = useToast()
 
   // カートの合計金額を計算
   const totalPrice = items.reduce((total, item) => total + item.price * item.quantity, 0)
@@ -47,12 +45,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (existingItem) {
         // 既存のアイテムの数量を更新
         const updatedItems = prevItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item,
+          item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
         )
 
         toast({
           title: "カートを更新しました",
-          description: `${product.name}の数量を${existingItem.quantity + quantity}に更新しました`,
+          description: `${product.name}の数量を${existingItem.quantity + quantity}に更新しました`
         })
 
         return updatedItems
@@ -60,12 +58,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
         // 新しいアイテムを追加
         const newItem: CartItem = {
           ...product,
-          quantity,
+          quantity
         }
 
-        toast({
-          title: "カートに追加しました",
-          description: `${product.name}をカートに追加しました`,
+        toast("カートに追加しました", {
+          description: `${product.name}をカートに追加しました`
         })
 
         return [...prevItems, newItem]
@@ -81,7 +78,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (itemToRemove) {
         toast({
           title: "商品を削除しました",
-          description: `${itemToRemove.name}をカートから削除しました`,
+          description: `${itemToRemove.name}をカートから削除しました`
         })
       }
 
@@ -109,7 +106,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         removeItem,
         updateQuantity,
         clearCart,
-        totalPrice,
+        totalPrice
       }}
     >
       {children}
