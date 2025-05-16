@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { Button } from '@workspace/ui/components/ui/button'
+import { Progress } from '@workspace/ui/components/ui/progress'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -8,6 +10,10 @@ function App() {
   return (
     <>
       <div>
+        <Button>
+          Tailwind Win!!
+        </Button>
+        <Progress value={33} />
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
