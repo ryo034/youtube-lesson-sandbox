@@ -62,5 +62,11 @@
     "@workspace/typescript-config": "workspace:*",
     "globals": "^16.0.0",
     "typescript": "~5.8.3"
+  },
+  "exports": {
+    "./styles/globals.css": "./src/styles/globals.css",
+    "./lib/*": "./src/lib/*",
+    "./components/*": "./src/components/*",
+    "./hooks/*": "./src/hooks/*"
   }
 }
